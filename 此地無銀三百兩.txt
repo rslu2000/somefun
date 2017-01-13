@@ -324,14 +324,14 @@ peer network login jim -p 6avZQLwcUe9b
 #部署
 peer chaincode deploy \
 -u jim \
--n mycc \
+-p github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02 \
 -c '{"Function":"init", "Args": ["a","100", "b", "200"]}'
 #查詢a 100
-peer chaincode query -u jim -n mycc -c '{"Function": "query", "Args": ["a"]}'
+peer chaincode query -u jim -n ${chaincode_name} -c '{"Function": "query", "Args": ["a"]}'
 #交易 a-35,b+35
-peer chaincode invoke -u jim -n mycc -c '{"Function": "invoke", "Args": ["a", "b", “35”]}’
+peer chaincode invoke -u jim -n ${chaincode_name} -c '{"Function": "invoke", "Args": ["a", "b", “35”]}’
 #查詢a 65
-peer chaincode query -u jim -n mycc -c '{"Function": "query", "Args": ["a"]}'
+peer chaincode query -u jim -n ${chaincode_name} -c '{"Function": "query", "Args": ["a"]}'
 
 ################################################
 #筆記到此結束
